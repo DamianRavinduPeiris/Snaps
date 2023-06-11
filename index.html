@@ -14,7 +14,8 @@
     <title>Unsplash.</title>
     <!--JQuery.-->
     <script crossorigin="anonymous"
-            integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" src="https://code.jquery.com/jquery-3.7.0.slim.min.js"></script>
+            integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE="
+            src="https://code.jquery.com/jquery-3.7.0.slim.min.js"></script>
     <!--Normalize CSS.-->
     <link href="normalize.css" rel="stylesheet">
     <!--CSS.-->
@@ -31,15 +32,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <!--Animate.style.-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet"/>
+    <!--Sweet Alert.-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 <div class="headerContainer ">
     <header>
-        <img alt="" class=" logo " src="https://unsplash.com/blog/content/images/max/2560/1-VnKoValwGK3-d1bZhD6sVA.jpeg">
+        <img alt="" class=" logo "
+             src="https://unsplash.com/blog/content/images/max/2560/1-VnKoValwGK3-d1bZhD6sVA.jpeg">
         <h1 class="headerText animate__animated animate__bounce">Unsplash.</h1>
     </header>
 </div>
 <div class="searchContainer">
+    <div class="mb-3">
+        <input class="form-control " id="searchBar" placeholder="🔍 Search high-resolution images powered by Unsplash.com"
+               type="text">
+    </div>
+
 
 </div>
 <script src="index.js"></script>

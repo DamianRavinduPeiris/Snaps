@@ -1,29 +1,61 @@
-.headerContainer{
+.headerContainer {
     display: flex;
     align-content: center;
     justify-content: center;
     overflow-y: hidden;
     overflow-x: hidden;
 }
+
 header {
     width: 100vw;
     height: 30vh;
     background-color: #000;
 }
-.headerText{
+
+.headerText {
     text-align: center;
     color: white;
     font-family: 'Bebas Neue', sans-serif;
 }
-.logo{
+
+.logo {
     width: 20rem;
     height: 10rem;
     margin-left: 50%;
     /*Move it back by 50% of its own width👇*/
     transform: translateX(-50%);
 }
-.searchContainer{
+
+.searchContainer {
+    position: relative;
+    display: flex;
+    align-content: center;
+    justify-content: center;
     width: 100vw;
     height: calc(100vh - 30vh);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+#searchBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 50%;
+    /*margin-top: 10rem;*/
+    font-weight: bold;
+}
+
+@media screen and (max-width: 800px) {
+    #searchBar{
+        width: fit-content;
+    }
 
 }
