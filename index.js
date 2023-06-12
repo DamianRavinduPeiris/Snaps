@@ -13,9 +13,7 @@ async function loadMainImage() {
         let finalData = await jsonData;
         let element = Math.floor(Math.random() * (finalData.length - 0) + 0)
         $(".searchContainer").css("background-image", "url(" + finalData[element].urls.full + ")")
-        setTimeout(() => {
-            $("#searchBar").addClass("animate__animated animate__rubberBand");
-        }, 1000)
+
 
 
     } catch (e) {
@@ -25,5 +23,4 @@ async function loadMainImage() {
 
 if (window.innerWidth < 800) {
     $("#searchBar").attr("placeholder", " 🔍 Search for images!");
-
 }
