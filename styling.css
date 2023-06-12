@@ -1,5 +1,5 @@
 body{
-    overflow: hidden;
+    overflow-x: hidden;
 }
 .headerContainer {
     display: flex;
@@ -11,7 +11,7 @@ body{
 
 header {
     width: 100vw;
-    height: 30vh;
+    height: 20vh;
     background-color: #1a1a1a;
 }
 
@@ -34,7 +34,7 @@ header {
     align-content: center;
     justify-content: center;
     width: 100vw;
-    height: calc(100vh - 30vh);
+    height: calc(100vh - 20vh);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -62,16 +62,24 @@ header {
     height: auto;
 }
 .child{
-    width: 31.25rem;
-    height: 31.25rem;
-    border: 1px solid black;
+    width: auto;
+    height: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-right: 2rem;
     border-radius: 5px;
-    margin-left: 1rem;
 }
 
 @media screen and (max-width: 800px) {
     #searchBar{
         width: fit-content;
+    }
+    .photoContainer{
+        flex-direction: column;
+    }
+    .child{
+        margin-right: 0;
+
     }
 
 }
