@@ -213,3 +213,11 @@ body{
     }
 
 }
+@media screen and (max-width: 1038px) {
+    #downloadButton{
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    
+}
