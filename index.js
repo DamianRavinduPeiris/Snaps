@@ -1,8 +1,9 @@
-$(document).ready(()=>{
+$(document).ready(() => {
     loadMainImage();
-    setTimeout(fetchPhotos,3000);
+    setTimeout(fetchPhotos, 1000);
 
 });
+var imageData = [];
 
 async function loadMainImage() {
 
@@ -12,6 +13,8 @@ async function loadMainImage() {
         let imageData = await response;
         let jsonData = imageData.json();
         let finalData = await jsonData;
+        /*Getting reference to another array for downloading purposes.*/
+        imageData = finalData;
         let element = Math.floor(Math.random() * (finalData.length - 0) + 0)
         $(".searchContainer").css("background-image", "url(" + finalData[element].urls.full + ")")
 
@@ -28,8 +31,11 @@ async function fetchPhotos() {
         let imageData = await response;
         let json = imageData.json();
         let finalData = await json;
+        /*Looping the array and appending the search results.*/
+        imageData = finalData;
         finalData.map((photo) => {
-            $(".photoContainer").append("<img  class='child' src=" + photo.urls.regular + " data-aos = zoom-in>")
+            var childElement = "<div class='child'><img src=" + photo.urls.regular + " data-aos='zoom-in'><button  data-aos='zoom-in' type='button' class='btn btn-success' id='downloadButton'>Download.</button></div>";
+            $(".photoContainer").append(childElement);
 
         });
 
@@ -52,7 +58,7 @@ $("#searchBar").on("keydown", (event) => {
 
 async function searchPhotos(query) {
     try {
-        let response = fetch("https://api.unsplash.com/search/photos/?client_id=lz0WtbT_YAZdZKUvfjBLkO9Fifnhw6y9S4kYJx7cj0A&query="+query);
+        let response = fetch("https://api.unsplash.com/search/photos/?client_id=lz0WtbT_YAZdZKUvfjBLkO9Fifnhw6y9S4kYJx7cj0A&query=" + query);
         let imageData = await response;
         let json = imageData.json();
         let finalData = await json;
@@ -60,14 +66,13 @@ async function searchPhotos(query) {
         /*Assigning the results array to a variable.*/
         let searchedImage = finalData.results;
         /*Looping the array and appending the search results.*/
-        searchedImage.map((image)=>{
-            $(".photoContainer").append("<img  class='child' src=" + image.urls.regular + " data-aos = zoom-in" + ">");
+        searchedImage.map((image) => {
+            $(".photoContainer").append("<div class='child'><img   src=" + image.urls.regular + " data-aos = zoom-in" + ">"+"<button data-aos='zoom-in' type='button' class='btn btn-success' id='downloadButton'>Download."+"</button>"+"</div>");
         });
 
 
-
-
-        swal("", "Showing results for " + query, "success")
+        /*Adding 1000px to the current scroll position.*/
+        $(window).scrollTop($(window).scrollTop() + 1000);
         $("#searchBar").val("");
     } catch (e) {
         swal("", "Something happened!" + e, "error")
@@ -75,3 +80,12 @@ async function searchPhotos(query) {
 
 
 }
+
+$(".photoContainer").on("click", "#downloadButton", function() {
+ swal("","Right click on this image and select open image in new tab and save the image.","info");
+});
+
+
+
+
+
