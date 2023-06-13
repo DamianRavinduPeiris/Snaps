@@ -30,27 +30,56 @@ async function loadMainImage() {
 
 
 async function fetchPhotos() {
-    try {
-        let response = fetch("https://api.unsplash.com/photos/?client_id=lz0WtbT_YAZdZKUvfjBLkO9Fifnhw6y9S4kYJx7cj0A&page=30&order_by=latest");
-        let imageData = await response;
-        let json = imageData.json();
-        let finalData = await json;
-        var btn = 0;
-        /*Looping the array and appending the search results.*/
-        finalData.map((photo) => {
-            var childElement = "<div class='child'><img src=" + photo.urls.regular + " data-aos='zoom-in'><button  data-aos='zoom-in' type='button' class='btn btn-success' id='downloadButton' data-index='"+btn+"'>Download.</button></div>";
-            $(".photoContainer").append(childElement);
-            /*Adding download links to an array.*/
-            downloadLinks.push(photo.links.download);
-            buttonIndex.push(btn)
-            btn++;
+    /*If screen width is > 1028 fetch small 4tos , else fetch regular 4tos.*/
 
-        });
+    if(window.innerWidth < 1028){
+        try {
+            let response = fetch("https://api.unsplash.com/photos/?client_id=lz0WtbT_YAZdZKUvfjBLkO9Fifnhw6y9S4kYJx7cj0A&page=30&order_by=latest");
+            let imageData = await response;
+            let json = imageData.json();
+            let finalData = await json;
+            var btn = 0;
+            /*Looping the array and appending the search results.*/
+            finalData.map((photo) => {
+                var childElement = "<div class='child'><img src=" + photo.urls.small_s3 + " data-aos='zoom-in'><button  data-aos='zoom-in' type='button' class='btn btn-success' id='downloadButton' data-index='"+btn+"'>Download.</button></div>";
+                $(".photoContainer").append(childElement);
+                /*Adding download links to an array.*/
+                downloadLinks.push(photo.links.download);
+                buttonIndex.push(btn)
+                btn++;
+
+            });
 
 
-    } catch (e) {
-        swal("", "Something happened!" + e, "error")
+        } catch (e) {
+            swal("", "Something happened!" + e, "error")
+        }
+
+    }else{
+        try {
+            let response = fetch("https://api.unsplash.com/photos/?client_id=lz0WtbT_YAZdZKUvfjBLkO9Fifnhw6y9S4kYJx7cj0A&page=30&order_by=latest");
+            let imageData = await response;
+            let json = imageData.json();
+            let finalData = await json;
+            var btn = 0;
+            /*Looping the array and appending the search results.*/
+            finalData.map((photo) => {
+                var childElement = "<div class='child'><img src=" + photo.urls.regular + " data-aos='zoom-in'><button  data-aos='zoom-in' type='button' class='btn btn-success' id='downloadButton' data-index='"+btn+"'>Download.</button></div>";
+                $(".photoContainer").append(childElement);
+                /*Adding download links to an array.*/
+                downloadLinks.push(photo.links.download);
+                buttonIndex.push(btn)
+                btn++;
+
+            });
+
+
+        } catch (e) {
+            swal("", "Something happened!" + e, "error")
+        }
+
     }
+
 
 }
 
