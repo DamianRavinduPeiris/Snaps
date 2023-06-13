@@ -3,7 +3,8 @@ $(document).ready(() => {
     setTimeout(fetchPhotos, 1000);
 
 });
-var imageData = [];
+var buttonIndex = [];
+var downloadLinks = [];
 
 async function loadMainImage() {
 
@@ -31,11 +32,15 @@ async function fetchPhotos() {
         let imageData = await response;
         let json = imageData.json();
         let finalData = await json;
+        var btn = 0;
         /*Looping the array and appending the search results.*/
-        imageData = finalData;
         finalData.map((photo) => {
-            var childElement = "<div class='child'><img src=" + photo.urls.regular + " data-aos='zoom-in'><button  data-aos='zoom-in' type='button' class='btn btn-success' id='downloadButton'>Download.</button></div>";
+            var childElement = "<div class='child'><img src=" + photo.urls.regular + " data-aos='zoom-in'><button  data-aos='zoom-in' type='button' class='btn btn-success' id='downloadButton' data-index='"+btn+"'>Download.</button></div>";
             $(".photoContainer").append(childElement);
+            /*Adding download links to an array.*/
+            downloadLinks.push(photo.links.download);
+            buttonIndex.push(btn)
+            btn++;
 
         });
 
@@ -82,7 +87,12 @@ async function searchPhotos(query) {
 }
 
 $(".photoContainer").on("click", "#downloadButton", function() {
- swal("","Right click on this image and select open image in new tab and save the image.","info");
+    /*Getting the relevant download link by getting the button index and matching it to the
+    * downloadLinks array.4*/
+    let urlIndex = $(this).attr("data-index");
+    swal("", "Downloading!", "info")
+    window.open(downloadLinks[urlIndex], "_blank")
+
 });
 
 
