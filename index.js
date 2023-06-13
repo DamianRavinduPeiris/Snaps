@@ -5,6 +5,9 @@ $(document).ready(() => {
 });
 var buttonIndex = [];
 var downloadLinks = [];
+var searchedImagesLinks = [];
+var searchedImagesButtons = [];
+var isSearched = false;
 
 async function loadMainImage() {
 
@@ -62,6 +65,7 @@ $("#searchBar").on("keydown", (event) => {
 })
 
 async function searchPhotos(query) {
+    isSearched = true;
     try {
         let response = fetch("https://api.unsplash.com/search/photos/?client_id=lz0WtbT_YAZdZKUvfjBLkO9Fifnhw6y9S4kYJx7cj0A&query=" + query);
         let imageData = await response;
@@ -71,9 +75,16 @@ async function searchPhotos(query) {
         /*Assigning the results array to a variable.*/
         let searchedImage = finalData.results;
         /*Looping the array and appending the search results.*/
+        var index = 0;
         searchedImage.map((image) => {
-            $(".photoContainer").append("<div class='child'><img   src=" + image.urls.regular + " data-aos = zoom-in" + ">"+"<button data-aos='zoom-in' type='button' class='btn btn-success' id='downloadButton'>Download."+"</button>"+"</div>");
+            $(".photoContainer").append("<div class='child'><img   src=" + image.urls.regular + " data-aos = zoom-in" + ">"+"<button data-aos='zoom-in' type='button' class='btn btn-success' id='downloadButton' data-link='"+index+"'>Download."+"</button>"+"</div>");
+            /*Getting the relevant download link by getting the button index and matching it to the
+    * downloadLinks array.*/
+            searchedImagesLinks.push(image.links.download);
+            searchedImagesButtons.push(index);
+            index++;
         });
+
 
 
         /*Adding 1000px to the current scroll position.*/
@@ -88,10 +99,16 @@ async function searchPhotos(query) {
 
 $(".photoContainer").on("click", "#downloadButton", function() {
     /*Getting the relevant download link by getting the button index and matching it to the
-    * downloadLinks array.4*/
-    let urlIndex = $(this).attr("data-index");
-    swal("", "Downloading!", "info")
-    window.open(downloadLinks[urlIndex], "_blank")
+    * downloadLinks array.Both indexes are same coz , both added at the same time.*/
+    if(isSearched){
+        let urlIndex = $(this).attr("data-link");/*When searching , the button attribute is set to data-link*/
+        window.open(searchedImagesLinks[urlIndex], "_blank")
+
+    }else{
+        let urlIndex = $(this).attr("data-index");/*If its a normal download , the button attribute is set to data-index.*/
+        window.open(downloadLinks[urlIndex], "_blank")
+    }
+
 
 });
 

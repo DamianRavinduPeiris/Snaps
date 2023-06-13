@@ -1,41 +1,11 @@
 body{
     overflow-x: hidden;
 }
-.headerContainer {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    overflow-y: hidden;
-    overflow-x: hidden;
-}
 
-header {
-    width: 100vw;
-    height: 20vh;
-    background-color: #1a1a1a;
-}
-
-.headerText {
-    text-align: center;
-    color: white;
-    margin-top: 2rem;
-    font-family: 'Geologica', sans-serif;
-}
-
-.logo {
-    width: 20rem;
-    height: 10rem;
-    margin-left: 50%;
-    /*Move it back by 50% of its own width👇*/
-    transform: translateX(-50%);
-}
 
 .searchContainer {
-    display: flex;
-    align-content: center;
-    justify-content: center;
     width: 100vw;
-    height: calc(100vh - 20vh);
+    height: 100vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -43,14 +13,48 @@ header {
     overflow-y: hidden;
     overflow-x: hidden;
 }
+.ss{
+    font-size: 1rem;
+}
+.headerText {
+    text-align: center;
+    margin-top: 2rem;
+    font-family: 'Geologica', sans-serif;
+}
+.headerText::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    z-index: -1;
+    opacity: 0;
+    animation: shiningEffect 2s linear infinite;
+}
+
+@keyframes shiningEffect {
+    0% {
+        opacity: 0;
+        background-position: -200% 0;
+    }
+    50% {
+        opacity: 1;
+        background-position: 200% 0;
+    }
+    100% {
+        opacity: 0;
+        background-position: 200% 0;
+    }
+}
 
 #searchBar {
     margin-left: 50%;
-    /*Move it back by 50% of its own width👇*/
     transform: translateX(-50%);
-    width: 300%;
-    font-family:Century Gothic;
-    margin-top: 10rem;
+    width: 50vw;
+    font-family: Century Gothic, sans-serif;
+    margin-top: 20rem;
     font-weight: bold;
 }
 
