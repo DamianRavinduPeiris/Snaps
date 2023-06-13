@@ -3,7 +3,8 @@
   
 ## A simple wallpaper website,built with <a href="https://unsplash.com" target=_blank>`unsplash.com`</a> API.
   
-  ![image](https://github.com/DamianRavinduPeiris/Snaps/assets/115478137/590466a1-1222-46bf-8af9-e3fe31dcc924)
+![image](https://github.com/DamianRavinduPeiris/Snaps/assets/115478137/b8cfb656-0884-4fd4-9899-8a18bc186787)
+
   
   
   
