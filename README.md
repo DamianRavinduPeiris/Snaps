@@ -8,5 +8,5 @@
   
   
   
-  ### 🚀 Now live at 👉  <a href="https://damianravindupeiris.github.io/Snaps/" target=_blank>`https://damianravindupeiris.github.io/Snaps/`</a>
+  ### 🚀 Now live at 👉  <a href="https://snaps-by-damian.pages.dev/" target=_blank>`https://snaps-by-damian.pages.dev/`</a>
 
