@@ -19,6 +19,8 @@ async function loadMainImage() {
         let finalData = await jsonData;
         /*Getting reference to another array for downloading purposes.*/
         imageData = finalData;
+
+
         let element = Math.floor(Math.random() * (finalData.length - 0) + 0)
         $(".searchContainer").css("background-image", "url(" + finalData[element].urls.full + ")")
 
