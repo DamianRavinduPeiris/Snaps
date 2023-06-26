@@ -3,6 +3,9 @@ $(document).ready(() => {
     setTimeout(fetchPhotos, 1000);
 
 });
+$(".headerText").on("click",()=>{
+   window.location.reload();
+});
 var buttonIndex = [];
 var downloadLinks = [];
 var searchedImagesLinks = [];
@@ -141,6 +144,7 @@ async function searchPhotos(query) {
 $(".photoContainer").on("click", "#downloadButton", function () {
     /*Getting the relevant download link by getting the button index and matching it to the
     * downloadLinks array.Both indexes are same coz , both added at the same time.*/
+    /*isSearched doesn't need to make false coz,it will be false when going back to the home page.(When refreshing the page.)*/
     if (isSearched) {
         let urlIndex = $(this).attr("data-link");/*When searching , the button attribute is set to data-link*/
         window.open(searchedImagesLinks[urlIndex], "_blank")
