@@ -85,6 +85,9 @@ body{
     bottom: 0;
     right: 0;
  }
+#footerText{
+    font-size: 1rem;
+}
 /*Footer - Start.*/
 .myFooter{
     position: relative;
